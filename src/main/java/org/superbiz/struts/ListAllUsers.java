@@ -64,13 +64,7 @@ public class ListAllUsers {
     public String execute() {
 
         try {
-            UserService service = null;
-            Properties props = new Properties();
-            props.put(Context.INITIAL_CONTEXT_FACTORY,
-                "org.apache.openejb.core.LocalInitialContextFactory");
-            Context ctx = new InitialContext(props);
-            service = (UserService) ctx.lookup("UserServiceImplLocal");
-            this.users = service.findAll();
+            this.users = userService.findAll();
         } catch (Exception e) {
             this.errorMessage = e.getMessage();
             return "failure";
