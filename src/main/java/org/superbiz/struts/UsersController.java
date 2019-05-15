@@ -57,4 +57,11 @@ public class UsersController {
 
         return "displayUser";
     }
+
+    @GetMapping("/list")
+    public String listUsers(Model model) {
+        model.addAttribute("users", userService.findAll());
+        return "displayUsers";
+    }
+
 }
